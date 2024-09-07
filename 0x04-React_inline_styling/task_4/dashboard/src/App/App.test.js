@@ -1,5 +1,4 @@
-/**
- * @jest-environment jsdom
+t-environment jsdom
  */
 import React from "react";
 import App from "./App";
@@ -9,6 +8,14 @@ import Footer from "../Footer/Footer";
 import Notifications from "../Notifications/Notifications";
 import CourseList from "../CourseList/CourseList";
 import { shallow, mount } from "enzyme";
+import { StyleSheetTestUtils } from "aphrodite";
+
+beforeEach(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
+afterEach(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
 
 describe("App tests", () => {
   it("renders without crashing", () => {
